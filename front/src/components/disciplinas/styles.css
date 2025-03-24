@@ -1,0 +1,189 @@
+/* Estilos gerais para a página */
+.disciplinas-container {
+    padding: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+    font-family: 'Roboto', sans-serif;
+    background-color: #F9F7FD; /* Cor de fundo suave */
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Título */
+h1 {
+    text-align: center;
+    font-size: 2.5em;
+    color: #6A4C9C; /* Roxo suave */
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+/* Estilos para a tabela */
+.disciplinas-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.disciplinas-table th, .disciplinas-table td {
+    padding: 15px;
+    text-align: left;
+    font-size: 1em;
+    border: 1px solid #E4D9F5;
+    color: #555;
+    transition: all 0.3s ease;
+}
+
+/* Cabeçalho da tabela */
+.disciplinas-table th {
+    background-color: #6A4C9C; /* Roxo mais forte */
+    color: #fff;
+    font-size: 1.1em;
+    font-weight: 700;
+}
+
+/* Linha alternada */
+.disciplinas-table tr:nth-child(even) {
+    background-color: #F3EBFF; /* Lilás claro */
+}
+
+.disciplinas-table tr:hover {
+    background-color: #E0B4D9; /* Lilás mais forte */
+    transform: scale(1.02);
+}
+
+/* Efeitos de borda nas células */
+.disciplinas-table td, .disciplinas-table th {
+    border-radius: 8px;
+    padding: 12px 20px;
+}
+
+/* Estilos de mensagem quando não há disciplinas */
+.disciplinas-container p {
+    text-align: center;
+    font-size: 1.2em;
+    color: #888;
+    margin-top: 20px;
+}
+
+/* Estilos para a barra de pesquisa */
+.pesquisar input {
+    width: 300px;
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: 2px solid #D1A3D8; /* Lilás suave */
+    border-radius: 50px;
+    font-size: 1em;
+    outline: none;
+    transition: 0.3s;
+}
+
+.pesquisar input:focus {
+    border-color: #6A4C9C; /* Roxo forte */
+    box-shadow: 0 0 10px rgba(106, 76, 156, 0.3);
+}
+
+/* Estilos para os botões de ação (editar, deletar, adicionar) */
+.footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    align-items: center;
+}
+
+.footer .procurar, .footer .adicionar {
+    background-color: #6A4C9C;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 50%;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.footer .procurar:hover, .footer .adicionar:hover {
+    background-color: #8E6FCA; /* Roxo mais claro */
+    transform: scale(1.1);
+}
+
+/* Estilos para o Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    width: 400px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.modal-content h2 {
+    font-size: 1.8em;
+    color: #6A4C9C;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Estilos para os inputs do modal */
+.modal input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 2px solid #D1A3D8;
+    border-radius: 10px;
+    font-size: 1em;
+    color: #333;
+    transition: 0.3s;
+}
+
+.modal input:focus {
+    border-color: #6A4C9C;
+    box-shadow: 0 0 10px rgba(106, 76, 156, 0.3);
+}
+
+/* Botão de envio no modal */
+.modal button {
+    width: 100%;
+    padding: 12px;
+    background-color: #6A4C9C;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.modal button:hover {
+    background-color: #8E6FCA;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5em;
+    color: #6A4C9C;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.close:hover {
+    color: #8E6FCA;
+}
