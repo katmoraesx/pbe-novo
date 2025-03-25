@@ -1,0 +1,15 @@
+.ambiente-container {
+    padding: 20px;
+}
+
+.lista-ambientes {
+    margin-top: 20px;
+}
+
+.ambiente {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}

@@ -5,30 +5,13 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView, ListAPIView
 from rest_framework import status
-from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.permissions import IsAuthenticated
 
 from rest_framework.filters import SearchFilter
 from django_filters.rest_framework import DjangoFilterBackend
 
 from .models import Disciplinas
-from rest_framework.filters import SearchFilter
-
-@api_view(['GET', 'POST'])
-@permission_classes([IsAuthenticated])
-def listar_disciplinas(request):
-    if request.method == 'GET':
-        queryset = Disciplinas.objects.all()
-        serializer = DisciplinasSerializer(queryset, many=True)
-        return Response(serializer.data)
-    elif request.method == 'POST':
-        serializer = DisciplinasSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        else:
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    
+from rest_framework.filters import SearchFilter    
 
 @api_view(['GET', 'POST'])
 @permission_classes([IsAuthenticated])
@@ -44,6 +27,21 @@ def buscar_nome_professor(request):
 
 
 ########################## Professores #############################
+@api_view(['GET', 'POST'])
+@permission_classes([IsAuthenticated])
+def listar_professores(request):
+    if request.method == 'GET':
+        queryset = Cadastro.objects.all()
+        serializer = CadastroSerializer(queryset, many=True)
+        return Response(serializer.data)
+    elif request.method == 'POST':
+        serializer = CadastroSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 class ProfessoresView(ListCreateAPIView):
     queryset = Cadastro.objects.all()
     serializer_class = CadastroSerializer
@@ -63,6 +61,21 @@ class ProfessoresSearchView(ListAPIView):
 
 
 ########################## Disciplinas #############################
+@api_view(['GET', 'POST'])
+@permission_classes([IsAuthenticated])
+def listar_disciplinas(request):
+    if request.method == 'GET':
+        queryset = Disciplinas.objects.all()
+        serializer = DisciplinasSerializer(queryset, many=True)
+        return Response(serializer.data)
+    elif request.method == 'POST':
+        serializer = DisciplinasSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 class DisciplinasView(ListCreateAPIView):
     queryset = Disciplinas.objects.all()
     serializer_class = DisciplinasSerializer
@@ -82,6 +95,21 @@ class DisciplinasView(ListCreateAPIView):
     search_fields = ['nome', 'sigla', 'curso']  # ajuste os campos conforme necessário
 
     ########################## Turma #############################
+
+@api_view(['GET', 'POST'])
+@permission_classes([IsAuthenticated])
+def listar_turma(request):
+    if request.method == 'GET':
+        queryset = Turma.objects.all()
+        serializer = TurmaSerializer(queryset, many=True)
+        return Response(serializer.data)
+    elif request.method == 'POST':
+        serializer = TurmaSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class TurmaView(ListCreateAPIView):
     queryset = Turma.objects.all()
@@ -105,20 +133,35 @@ class TurmaView(ListCreateAPIView):
 
     ########################## curso #############################
 
+@api_view(['GET', 'POST'])
+@permission_classes([IsAuthenticated])
+def listar_curso(request):
+    if request.method == 'GET':
+        queryset = Curso.objects.all()
+        serializer = CursoSerializer(queryset, many=True)
+        return Response(serializer.data)
+    elif request.method == 'POST':
+        serializer = CursoSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 class CursoView(ListCreateAPIView):
-    queryset = Turma.objects.all()
-    serializer_class = TurmaSerializer
+    queryset = Curso.objects.all()
+    serializer_class = CursoSerializer
     permission_classes = [IsAuthenticated]
 
 class CursoDetailView(RetrieveUpdateDestroyAPIView):
-    queryset = Turma.objects.all()
-    serializer_class = TurmaSerializer
+    queryset = Curso.objects.all()
+    serializer_class = CursoSerializer
     permission_classes = [IsAuthenticated]
 
 
 class CursoView(ListCreateAPIView):
-    queryset = Turma.objects.all()
-    serializer_class = TurmaSerializer
+    queryset = Curso.objects.all()
+    serializer_class = CursoSerializer
     permission_classes = [IsAuthenticated]
     filter_backends = [SearchFilter]
     search_fields = ['codigo', 'curso', 'tipo', 'ha', 'sigla',]  # ajuste os campos conforme necessário
@@ -126,20 +169,35 @@ class CursoView(ListCreateAPIView):
 
     ########################## ambiente #############################
 
+@api_view(['GET', 'POST'])
+@permission_classes([IsAuthenticated])
+def listar_ambiente(request):
+    if request.method == 'GET':
+        queryset = Ambiente.objects.all()
+        serializer = AmbienteSerializer(queryset, many=True)
+        return Response(serializer.data)
+    elif request.method == 'POST':
+        serializer = AmbienteSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 class AmbienteView(ListCreateAPIView):
-    queryset = Turma.objects.all()
-    serializer_class = TurmaSerializer
+    queryset = Ambiente.objects.all()
+    serializer_class = AmbienteSerializer
     permission_classes = [IsAuthenticated]
 
 class AmbienteDetailView(RetrieveUpdateDestroyAPIView):
-    queryset = Turma.objects.all()
-    serializer_class = TurmaSerializer
+    queryset = Ambiente.objects.all()
+    serializer_class = AmbienteSerializer
     permission_classes = [IsAuthenticated]
 
 
 class AmbienteView(ListCreateAPIView):
-    queryset = Turma.objects.all()
-    serializer_class = TurmaSerializer
+    queryset = Ambiente.objects.all()
+    serializer_class = AmbienteSerializer
     permission_classes = [IsAuthenticated]
     filter_backends = [SearchFilter]
     search_fields = ['codigo', 'sala', 'capacidade', 'responsavel', 'periodo',]  # ajuste os campos conforme necessário
