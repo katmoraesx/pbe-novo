@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .models import Cadastro, Disciplinas
-from .serializer import CadastroSerializer, DisciplinasSerializer
+from .models import Cadastro, Disciplinas, Turma, Curso, Ambiente
+from .serializer import CadastroSerializer, DisciplinasSerializer, TurmaSerializer, CursoSerializer, AmbienteSerializer
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView, ListAPIView
@@ -43,7 +43,7 @@ def buscar_nome_professor(request):
     return Response(serializer.data, status=status.HTTP_200_OK)
 
 
-
+########################## Professores #############################
 class ProfessoresView(ListCreateAPIView):
     queryset = Cadastro.objects.all()
     serializer_class = CadastroSerializer
@@ -81,5 +81,65 @@ class DisciplinasView(ListCreateAPIView):
     filter_backends = [SearchFilter]
     search_fields = ['nome', 'sigla', 'curso']  # ajuste os campos conforme necessário
 
+    ########################## Turma #############################
+
+class TurmaView(ListCreateAPIView):
+    queryset = Turma.objects.all()
+    serializer_class = TurmaSerializer
+    permission_classes = [IsAuthenticated]
+
+class TurmaDetailView(RetrieveUpdateDestroyAPIView):
+    queryset = Turma.objects.all()
+    serializer_class = TurmaSerializer
+    permission_classes = [IsAuthenticated]
 
 
+class TurmaView(ListCreateAPIView):
+    queryset = Turma.objects.all()
+    serializer_class = TurmaSerializer
+    permission_classes = [IsAuthenticated]
+    filter_backends = [SearchFilter]
+    search_fields = ['codigo', 'turma',]  # ajuste os campos conforme necessário
+
+
+
+    ########################## curso #############################
+
+class CursoView(ListCreateAPIView):
+    queryset = Turma.objects.all()
+    serializer_class = TurmaSerializer
+    permission_classes = [IsAuthenticated]
+
+class CursoDetailView(RetrieveUpdateDestroyAPIView):
+    queryset = Turma.objects.all()
+    serializer_class = TurmaSerializer
+    permission_classes = [IsAuthenticated]
+
+
+class CursoView(ListCreateAPIView):
+    queryset = Turma.objects.all()
+    serializer_class = TurmaSerializer
+    permission_classes = [IsAuthenticated]
+    filter_backends = [SearchFilter]
+    search_fields = ['codigo', 'curso', 'tipo', 'ha', 'sigla',]  # ajuste os campos conforme necessário
+
+
+    ########################## ambiente #############################
+
+class AmbienteView(ListCreateAPIView):
+    queryset = Turma.objects.all()
+    serializer_class = TurmaSerializer
+    permission_classes = [IsAuthenticated]
+
+class AmbienteDetailView(RetrieveUpdateDestroyAPIView):
+    queryset = Turma.objects.all()
+    serializer_class = TurmaSerializer
+    permission_classes = [IsAuthenticated]
+
+
+class AmbienteView(ListCreateAPIView):
+    queryset = Turma.objects.all()
+    serializer_class = TurmaSerializer
+    permission_classes = [IsAuthenticated]
+    filter_backends = [SearchFilter]
+    search_fields = ['codigo', 'sala', 'capacidade', 'responsavel', 'periodo',]  # ajuste os campos conforme necessário
